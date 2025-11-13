@@ -4,10 +4,11 @@
 sudo iptables -F
 sudo iptables -X
 
-# Crear cadena para permitir pings solo desde las IPs autorizadas
+# Crear una cadena para permitir ICMP solo desde las IPs permitidas
 sudo iptables -N ALLOW_PING
 
-# Agregar IPs permitidas a la cadena
+# Agregar las IPs permitidas a la cadena
+sudo iptables -A ALLOW_PING -s 127.0.0.1 -j ACCEPT
 sudo iptables -A ALLOW_PING -s 67.220.85.186 -j ACCEPT
 sudo iptables -A ALLOW_PING -s 38.52.182.224 -j ACCEPT
 sudo iptables -A ALLOW_PING -s 181.119.93.90 -j ACCEPT
